@@ -68,12 +68,43 @@ public class Gauss {
         return x;
     }
 
+    /**
+     * Intercambia dos filas de la matriz.
+     */
     private static void intercambiarFilas(
             double[][] matriz, int fila1, int fila2) {
 
         if (fila1 == fila2) {
             return;
         }
+ double[] temporal = matriz[fila1];
+        matriz[fila1] = matriz[fila2];
+        matriz[fila2] = temporal;
+    }
 
-        double[] temporal = matriz[fila1];
-        matriz[fila1
+    /**
+     * Imprime la matriz aumentada.
+     */
+    public static void imprimirMatriz(double[][] matriz) {
+        for (double[] fila : matriz) {
+            for (double valor : fila) {
+                System.out.printf("%10.4f ", valor);
+            }
+            System.out.println();
+        }
+    }
+
+    /**
+     * Imprime las soluciones del sistema.
+     */
+    public static void imprimirSolucion(double[] solucion) {
+        for (int i = 0; i < solucion.length; i++) {
+            System.out.printf(
+                    "x%d = %.4f%n",
+                    i + 1,
+                    solucion[i]
+            );
+        }
+    }
+}
+        double[] temporal = matriz[f
