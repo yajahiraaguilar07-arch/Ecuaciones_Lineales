@@ -15,7 +15,6 @@ public class Gauss {
         int n = matriz.length;
 
         for (int columna = 0; columna < n; columna++) {
-
             int filaPivote = columna;
 
             for (int fila = columna + 1; fila < n; fila++) {
@@ -27,14 +26,15 @@ public class Gauss {
 
             if (Math.abs(matriz[filaPivote][columna]) < EPSILON) {
                 throw new IllegalArgumentException(
-                        "El sistema no tiene una solución única.");
+                    "El sistema no tiene una solución única."
+                );
             }
 
             intercambiarFilas(matriz, columna, filaPivote);
 
             for (int fila = columna + 1; fila < n; fila++) {
                 double factor =
-                        matriz[fila][columna] / matriz[columna][columna];
+                    matriz[fila][columna] / matriz[columna][columna];
 
                 for (int j = columna; j <= n; j++) {
                     matriz[fila][j] -= factor * matriz[columna][j];
@@ -59,7 +59,8 @@ public class Gauss {
 
             if (Math.abs(matriz[i][i]) < EPSILON) {
                 throw new IllegalArgumentException(
-                        "El sistema no tiene una solución única.");
+                    "El sistema no tiene una solución única."
+                );
             }
 
             x[i] = suma / matriz[i][i];
@@ -77,7 +78,8 @@ public class Gauss {
         if (fila1 == fila2) {
             return;
         }
- double[] temporal = matriz[fila1];
+
+        double[] temporal = matriz[fila1];
         matriz[fila1] = matriz[fila2];
         matriz[fila2] = temporal;
     }
@@ -100,11 +102,10 @@ public class Gauss {
     public static void imprimirSolucion(double[] solucion) {
         for (int i = 0; i < solucion.length; i++) {
             System.out.printf(
-                    "x%d = %.4f%n",
-                    i + 1,
-                    solucion[i]
+                "x%d = %.4f%n",
+                i + 1,
+                solucion[i]
             );
         }
     }
 }
-        double[] temporal = matriz[f
