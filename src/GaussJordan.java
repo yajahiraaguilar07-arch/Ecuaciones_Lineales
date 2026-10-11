@@ -52,4 +52,3 @@ public class GaussJordan {
         return solucion;
     }
 }
-}
