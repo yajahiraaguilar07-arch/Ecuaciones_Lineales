@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 /**
  * Clase principal del programa.
- * Práctica: Método de Gauss
+ * Practica: Metodo de Gauss-Jordan
  * Alumna: Yajahira Aguilar
  */
 public class Main {
@@ -11,31 +11,36 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("========================================");
-        System.out.println("       MÉTODO DE GAUSS - JAVA");
+        System.out.println("   METODO DE GAUSS-JORDAN - JAVA");
         System.out.println("       Yajahira Aguilar");
         System.out.println("========================================");
 
-        int n = EntradaDatos.leerTamano(scanner);
-        double[][] matriz = EntradaDatos.leerMatriz(scanner, n);
-
-        System.out.println("\nMatriz aumentada ingresada:");
-        Gauss.imprimirMatriz(matriz);
-
         try {
-            Gauss.eliminacion(matriz);
+            int n = EntradaDatos.leerTamano(scanner);
+            double[][] matriz = EntradaDatos.leerMatriz(scanner, n);
 
-            System.out.println("\nMatriz después de la eliminación:");
+            System.out.println("\nMatriz aumentada ingresada:");
             Gauss.imprimirMatriz(matriz);
 
-            double[] solucion = Gauss.sustitucionRegresiva(matriz);
+            double[] solucion = GaussJordan.resolver(matriz);
 
-            System.out.println("\nSolución del sistema:");
-            Gauss.imprimirSolucion(solucion);
+            if (solucion != null) {
+                System.out.println("\nSolucion del sistema:");
+                Gauss.imprimirSolucion(solucion);
+            } else {
+                System.out.println(
+                    "\nEl sistema no tiene solucion unica."
+                );
+            }
 
         } catch (IllegalArgumentException e) {
-            System.out.println("\nNo se pudo resolver el sistema: " + e.getMessage());
+            System.out.println(
+                "\nNo se pudo resolver el sistema: "
+                + e.getMessage()
+            );
+        } finally {
+            scanner.close();
         }
-
-        scanner.close();
     }
+]
 }
